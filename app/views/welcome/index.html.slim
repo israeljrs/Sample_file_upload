@@ -1,0 +1,34 @@
+.container-fluid
+  .container
+    .row.mt-2
+      .col
+        .jumbotron
+          h3.text-center Sample file parse
+    = flash_helper 
+    .row
+      .col
+        = form_with model: @bucket, url: bucket_path(@bucket),
+          method: :post, local: true do |f|
+          .form-group
+            = f.file_field :files, multiple: true
+          .form-group
+            = f.submit 'Enviar'
+    .row
+      .col
+        table.table.striped
+          tr
+            td comprador
+            td descrição
+            td preço
+            td quantidade
+            td endereco
+            td fornecedor
+          - @orders.each do |order|
+            tr
+              td = order.comprador
+              td = order.descricao
+              td = order.preco
+              td = order.quantidade
+              td = order.endereco
+              td = order.fornecedor
+
